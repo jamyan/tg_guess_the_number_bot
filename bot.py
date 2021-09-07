@@ -1,8 +1,8 @@
-from aiogram.dispatcher.filters.state import State, StatesGroup
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram.dispatcher.filters import Text
 from aiogram import Bot, Dispatcher, types
 from aiogram.dispatcher import FSMContext
+from aiogram.dispatcher.filters import Text
+from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 import random
 
@@ -14,9 +14,10 @@ dp = Dispatcher(bot, storage=storage)
 class Form(StatesGroup):
     number = State()
 
+
 @dp.message_handler(commands=['help'])
 async def help(message: types.Message):
-    await message.reply('Hi! I am the Telegram bot. I can play Guess the number game. /start to start the game')
+    await message.reply('Hi! I am the Telegram bot. I can play Guess the number game. /start to start the game.')
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
