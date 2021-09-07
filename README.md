@@ -1,4 +1,4 @@
-# tg_guess_the_number_bot
+# Guess the Number Telegram Bot
 Telegram bot playing "Guess the number" game.
 ---
 It thinks of a number from one to a hundred. You can try to guess it. Bot informs if the number is less or more than the hidden.
