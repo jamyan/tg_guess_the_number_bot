@@ -1,3 +1,5 @@
+![Guess the Number Telegram Bot](https://habrastorage.org/webt/gz/um/ve/gzumved7g8w47aidahdhqszbjxc.png)
+---
 # Guess the Number Telegram Bot
 Telegram bot playing "Guess the number" game.
 ---
