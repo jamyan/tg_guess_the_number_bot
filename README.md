@@ -9,5 +9,5 @@ It thinks of a number from one to a hundred. You can try to guess it. Bot inform
 ## Commands
 * /help — about the bot
 * /start — start the game
-* /calcel — stop the game
+* /cancel — stop the game
 * stop — stop the game
