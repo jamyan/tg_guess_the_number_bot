@@ -23,7 +23,7 @@ async def help(message: types.Message):
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     await Form.random_number.set()
-    await bot.send_message(message.chat.id, 'I thought of a number from 1 to 100. Try to guess it. (/cancel to stop the game)')
+    await bot.send_message(message.chat.id, 'I am thinking of a number from 1 to 100. Try to guess it. (/cancel to stop the game)')
 
 @dp.message_handler(state='*', commands='cancel')
 @dp.message_handler(Text(equals='stop', ignore_case=True), state='*')
