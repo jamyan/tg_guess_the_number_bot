@@ -6,12 +6,13 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 import random
 
-bot = Bot(token='TELEGRAM_API_TOKEN_HERE')
+bot = Bot(token='1958876288:AAFTrHokylE3kNBl1on_nTZLHPuCx0QJCOY')
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
 
 class Form(StatesGroup):
+    random_number = State()
     number = State()
 
 
@@ -21,9 +22,7 @@ async def help(message: types.Message):
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await Form.number.set()
-    global number
-    number = random.randint(1, 100)
+    await Form.random_number.set()
     await bot.send_message(message.chat.id, 'I thought of a number from 1 to 100. Try to guess it. (/cancel to stop the game)')
 
 @dp.message_handler(state='*', commands='cancel')
@@ -35,17 +34,30 @@ async def cancel_handler(message: types.Message, state: FSMContext):
     await state.finish()
     await message.reply('Ok. The game was interrupted. /start to play again.')
 
+@dp.message_handler(state=Form.random_number)
+async def random_number(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+       data['random_number'] = random.randint(1, 100)
+    await Form.next()
+    if int(message.text) == data['random_number']:
+        await message.reply('Congratulations! You guessed!')
+        await state.finish()
+    elif int(message.text) > data['random_number']:
+        await message.reply('Nope. The hidden number is less...')
+    elif int(message.text) < data['random_number']:
+        await message.reply('Nope. The hidden number is greater...')
+
 @dp.message_handler(state=Form.number)
 async def answer(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['number'] = int(message.text)
-    if data['number'] == number:
+    if data['number'] == data['random_number']:
         await message.reply('Congratulations! You guessed!')
         await state.finish()
-    elif data['number'] > number:
+    elif data['number'] > data['random_number']:
         await message.reply('Nope. The hidden number is less...')
         return answer
-    elif data['number'] < number:
+    elif data['number'] < data['random_number']:
         await message.reply('Nope. The hidden number is greater...')
         return answer
 
