@@ -8,7 +8,7 @@ Telegram bot playing "Guess the number" game.
 Bot thinks of a number from one to a hundred. You can try to guess it. Bot informs if the number is less or more than the hidden one.
 
 ### Requrements
-
+Python **3.7+**
 ```
 $ pip install aiogram
 ```
