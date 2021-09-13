@@ -5,8 +5,9 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.utils import executor
 import random
+import os
 
-bot = Bot(token='TELEGRAM_API_TOKEN_HERE')
+bot = Bot(token=os.getenv("TOKEN"))
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
