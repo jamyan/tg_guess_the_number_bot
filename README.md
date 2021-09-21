@@ -15,7 +15,7 @@ $ pip install aiogram
 
 ### Setup
 * Set environment variable TOKEN with your Telegram API Token value **OR**
-  * Set your Telegram API Token as variable value: ```bot = Bot(token='TELEGRAM_API_TOKEN_HERE')``` (**bot.py**, *line 10*)
+* Set your Telegram API Token as variable value: ```bot = Bot(token='TELEGRAM_API_TOKEN_HERE')``` (**bot.py**, *line 10*)
 * Execute **bot.py**
 ### Commands
 * /help — about the bot
