@@ -21,4 +21,3 @@ $ pip install aiogram
 * /help — about the bot
 * /start — start the game
 * /cancel — stop the game
-* stop — stop the game
